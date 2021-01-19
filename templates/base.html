@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Planner - {% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='mymovies.css') }}" />
+</head>
+
+
+<body>
+  <header>
+    <section class="hero has-background-black">
+      <div class="hero-body">
+        <div class="container">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-menu">
+              <div class="navbar-start">
+                <div class="navbar-item">
+                  <div class="buttons">
+                    {% if 'user_id' in session %}
+                    <a class="button is-medium is-black" href="{{ url_for('profile_page', username=session['user_id']) }}"> Profile </a>
+                    <a class="button is-medium is-black" href="{{ url_for('ajanda_page') }}"> Agenda </a>
+                    <a class="button is-medium is-black" href="{{ url_for('schedule_page') }}"> Schedule </a>
+                    <a class="button is-medium is-black" href="{{ url_for('exams_page') }}"> My Exams </a>
+                    <a class="button is-medium is-black" href="{{ url_for('homeworks_page') }}"> My Homeworks </a>
+                    <a class="button is-medium is-black" href="{{ url_for('edit_courses_page') }}"> Edit Courses </a>
+                    <a class="button is-medium is-black" href="{{ url_for('edit_profile_page') }}"> Edit Profile </a>
+                    {% else %}
+                    <a class="button is-medium is-black" href="{{ url_for('home_page') }}"> Home </a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+          
+              <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="buttons">
+                    {% if 'user_id' in session %}
+                    <a class="button is-medium is-black" href="{{ url_for('logout_page')}}"> Log out </a>
+                    {% else %}
+                    <a class="button is-medium is-black" href="{{ url_for('signup_page')}}"> Sign up </a>
+                
+                    <a class="button is-medium is-black" href="{{ url_for('login_page')}}"> Log in </a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </header> 
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="content">
+      <small>&copy; 2020, Melike</small>
+    </div>
+  </footer>
+
+</body>
+
+</html>

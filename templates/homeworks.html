@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}My Homeworks{% endblock %}
+{% block content %}
+<section class="hero has-background-dark">
+    <div class="hero-body">
+        <div class="container">
+            <div class="column">
+                <div class="notification">
+                    <p>You have {{ past+future }} homeworks in total.</p>
+                    <p>Congratulations, you have taken {{ past }} homeworks, succesfully.</p>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4"> Your Present Homeworks</h1>
+                            <form method="POST" action="/homeworks">
+                                <table class="table is-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Course Name</th>
+                                            <th>Homework title</th>
+                                            <th>Deadline</th>
+                                            <th>Status</th>
+                                            <th>Finish</th>
+                                            <th>Delete Homework</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for hw in homeworks %}
+                                        {% if hw['deadline'] > today %}
+                                        <tr class="th">
+                                            <th>{{ hw['course_name'] }}</th>
+                                            <th>{{ hw['hw_name'] }}</th>
+                                            <th>{{ hw['deadline'] }}</th>
+                                            {% if hw['hw_status'] == 1 %}
+                                            <th> finished </th>
+                                            {% else %}
+                                            <th> not finished </th>
+                                            {% endif %}
+                                            <th><input type="checkbox" value={{ hw['homework_id'] }} name="succesbox">
+                                            <th><input type="checkbox" value={{ hw['homework_id'] }} name="deletebox">
+                                            </th>
+                                        </tr>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                <input type="submit" value="finish">
+                                <input type="submit" value="delete">
+                            </form>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4"> Your Previous Homeworks</h1>
+                            <table class="table is-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Course Name</th>
+                                        <th>Homework title</th>
+                                        <th>Deadline</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for hw in homeworks %}
+                                    {% if hw['deadline'] < today %} <tr class="th">
+                                        <th>{{ hw['course_name'] }}</th>
+                                        <th>{{ hw['hw_name'] }}</th>
+                                        <th>{{ hw['deadline'] }}</th>
+                                        </tr>
+                                        {% endif %}
+                                        {% endfor %}
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

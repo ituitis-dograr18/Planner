@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<section class="hero has-background-dark">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4">Add New Course</h4>
+                        <form action="" method="post" name="add_course">
+                            {{ course_form.csrf_token }}
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Course Name :</label>
+                                </div>
+                                <div class="control">
+                                    {{ course_form.course_name(required=True, class='input') }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Instructor :</label>
+                                </div>
+                                <div class="control">
+                                    {{ course_form.instructor(required=True, class='input') }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Course Day :</label>
+                                </div>
+                                <div class="control">
+                                    {{ course_form.course_day(class='input') }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <p>(Please enter HH:00)</p>
+                                    <label class="label">Course Start Time :</label>
+                                </div>
+                                <div class="control">
+                                    {{ course_form.start_time(required=True, class='input') }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <p>(Please enter HH:00)</p>
+                                    <label class="label">Course End Time :</label>
+                                </div>
+                                <div class="control">
+                                    {{ course_form.end_time(required=True, class='input') }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Study Duration :</label>
+                                </div>
+                                <div class="control">
+                                    {{ course_form.study_duration(required=True, class='input') }}
+                                </div>
+                            </div>
+
+                            <div class="button is-black is-large is-fullwidth">
+                                <div class="control">
+                                    {{course_form.submit1(class='input', )}}
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4">Add New Homework</h4>
+                        <form action="" method="post" name="edit_day">
+                            {{ hw_form.csrf_token }}
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Course Name : </label>
+                                </div>
+                                <div class="control">
+                                    {{ hw_form.course_name(required=True, class='input')}}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Homework Title : </label>
+                                </div>
+                                <div class="control">
+                                    {{ hw_form.hw_name(required=True, class='input')}}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <p>(Please enter YYYY-MM-DD)</p>
+                                    <label class="label">Deadline : </label>
+                                </div>
+                                <div class="control">
+                                    {{ hw_form.deadline(required=True, class='input')}}
+                                </div>
+                            </div>
+                            
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Percentage : </label>
+                                </div>
+                                <div class="control">
+                                    {{ hw_form.percent(required=True, class='input')}}
+                                </div>
+                            </div>
+
+                            <div class="button is-black is-large is-fullwidth">
+                                <div class="control">
+                                    {{hw_form.submit3(class='input')}}
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4">Add New Exam</h4>
+                        <form action="" method="post" name="edit_day">
+                            {{ exam_form.csrf_token }}
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Course Name : </label>
+                                </div>
+                                <div class="control">
+                                    {{ exam_form.course_name(required=True, class='input')}}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Exam Name : </label>
+                                </div>
+                                <div class="control">
+                                    {{ exam_form.exam_name(required=True, class='input')}}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <p>(Please enter YYYY-MM-DD)</p>
+                                    <label class="label">Date : </label>
+                                </div>
+                                <div class="control">
+                                    {{ exam_form.date(required=True, class='input')}}
+                                </div>
+                            </div>
+                            
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Percentage : </label>
+                                </div>
+                                <div class="control">
+                                    {{ exam_form.percent(required=True, class='input')}}
+                                </div>
+                            </div>
+
+                            <div class="button is-black is-large is-fullwidth">
+                                <div class="control">
+                                    {{exam_form.submit2(class='input', )}}
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4">Delete Course</h4>
+                        <form action="" method="post" name="delete_course">
+                            {{ course_del_form.csrf_token }}
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Course Name : </label>
+                                </div>
+                                <div class="control">
+                                    {{ course_del_form.course_name(required=True, class='input')}}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Are you sure? : </label>
+                                </div>
+                                <div class="control">
+                                    {{ course_del_form.im_sure(class='input') }}
+                                </div>
+                            </div>
+
+                            <div class="button is-black is-large is-fullwidth">
+                                <div class="control">
+                                    {{course_del_form.submit4(class='input', )}}
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

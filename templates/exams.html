@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}My Exams{% endblock %}
+{% block content %}
+<section class="hero has-background-dark">
+    <div class="hero-body">
+        <div class="container">
+            <div class="column">
+                <div class="notification">
+                    <p>You have {{ past+future }} exams in total.</p>
+                    <p>Congratulations, you have taken {{ past }} exams, succesfully.</p>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4"> Your Present Exams</h1>
+                            <form method="POST" action='/exams'>
+                                <table class="table is-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Course Name</th>
+                                            <th>Exam Name</th>
+                                            <th>Exam Date</th>
+                                            <th>Delete Exam</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for exam in exams %}
+                                        {% if exam['exam_date'] > today %}
+                                        <tr class="th">
+                                            <th>{{ exam['course_name'] }}</th>
+                                            <th>{{ exam['exam_name'] }}</th>
+                                            <th>{{ exam['exam_date'] }}</th>
+                                            <th><input type="checkbox" value={{ exam['exam_id'] }} name="deletebox"></th>
+                                        </tr>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                <input type="submit" value="delete">
+                            </form>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4"> Your Previous Exams</h1>
+                            <table class="table is-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Course Name</th>
+                                        <th>Exam date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for exam in exams %}
+                                    {% if exam['exam_date'] < today or exam['exam_date']==NULL%} <tr class="th">
+                                        <th>{{ exam['course_name'] }}</th>
+                                        <th>{{ exam['exam_date'] }}</th>
+                                        </tr>
+                                        {% endif %}
+                                        {% endfor %}
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

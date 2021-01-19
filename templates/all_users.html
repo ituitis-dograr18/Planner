@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}All Users{% endblock %}
+{% block content %}
+<h1>Here is the all users of the Planner : </h1>
+
+<div class='columns is-mobile'>
+    <div class='column is-4'>
+        <table class="table">
+            <thead>
+                <tr class="th">
+                    <th>Username</th>
+                    <th>First name</th>
+                    <th>Last Name</th>
+                    <th>E-mail</th>
+                    <th>Phone number</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr class="th">
+                    <th>{{ user['username'] }}</th>
+                    <th>{{ user['first_name'] }}</th>
+                    <th>{{ user['last_name'] }}</th>
+                    <th>{{ user['email'] }}</th>
+                    <th>{{ user['phone'] }}</th>
+                    <th>{{ user['score'] }}</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Sign up{% endblock %}
+{% block content %}
+<section class="hero has-background-dark">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4">Sign up</h4>
+                        <form action="" method="post" name="signup">
+                            {{ form.csrf_token }}
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Email :</label>
+                                </div>
+                                <div class="control">
+                                    {{ form.email(required=True, class='input is-large', placeholder='your email') }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Username :</label>
+                                </div>
+                                <div class="control">
+                                    {{ form.username(required=True, class='input is-large', placeholder='your username') }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Password :</label>
+                                </div>
+                                <div class="control">
+                                    {{ form.password(required=True, class='input is-large', placeholder='your password') }}
+                                </div>
+                            </div>
+
+                            <button class="button is-black is-large is-fullwidth"> Signup </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

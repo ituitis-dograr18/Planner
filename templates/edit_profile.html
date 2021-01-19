@@ -1,0 +1,420 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<section class="hero has-background-dark">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4">Edit My Profile</h4>
+                        <form action="" method="post" name="edit_profile">
+                            {{ edit_form.csrf_token }}
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Username :</label>
+                                </div>
+                                <fieldset disabled>
+                                    <div class="control">
+                                        {{ edit_form.username(class='input', value= user.username ) }}
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">E-mail :</label>
+                                </div>
+                                <div class="control">
+                                    {{ edit_form.email(required=True, class='input', value=user.email)}}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">First name :</label>
+                                </div>
+                                <div class="control">
+                                    {{ edit_form.first_name(class='input', placeholder='your first name',
+                                    value=user.first_name) }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Last name :</label>
+                                </div>
+                                <div class="control">
+                                    {{ edit_form.last_name(class='input', placeholder='your last name',
+                                    value=user.last_name) }}
+                                </div>
+                            </div>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Phone number :</label>
+                                </div>
+                                <div class="control">
+                                    {{ edit_form.phone_num(class='input', placeholder='your phone number',
+                                    value=user.phone) }}
+                                </div>
+                            </div>
+
+                            <div class="button is-black is-large is-fullwidth">
+                                <div class="control">
+                                {{edit_form.submit1(class='input', )}}
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4">Delete My Account</h4>
+                        <form action="" method="post" name="edit_profile">
+                            {{ edit_form.csrf_token }}
+
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">To delete your account, enter "Delete Account" :</label>
+                                </div>
+                                <div class="control">
+                                    {{ deleteme.delacc(required=True, class='input')}}
+                                </div>
+                            </div>
+
+                            <div class="button is-black is-large is-fullwidth">
+                                <div class="control">
+                                {{deleteme.submit3(class='input', )}}
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4">Edit My Available Times</h4>
+                        <form action="" method="post" name="edit_day">
+                            {{ day_form.csrf_token }}
+                            
+                            <div class="field is-horizontal">
+                                <div class="field-label">
+                                    <label class="label">Select the day : </label>
+                                </div>
+                                <div class="select">
+                                    <div class="control">
+                                        {{ day_form.day }}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h5 class="title is-5">Select your study times</h5>
+                            <p>(It's enough to select only your study times)</p>
+
+                            <div class="columns is-centered is-gapless">
+                                <div class="column is-one-quarter is-narrow">
+                                    <div class="notification">
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">00:00 - 01:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.zero_to_one(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">01:00 - 02:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.one_to_two(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">02:00 - 03:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.two_to_three(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">03:00 - 04:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.three_to_four(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">04:00 - 05:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.four_to_five(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">05:00 - 06:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.five_to_six(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column is-one-quarter is-narrow">
+                                    <div class="notification">
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">06:00 - 07:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.six_to_seven(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">07:00 - 08:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.seven_to_eight(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">08:00 - 09:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.eight_to_nine(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">09:00 - 10:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.nine_to_ten(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">10:00 - 11:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.ten_to_eleven(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">11:00 - 12:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.eleven_to_twelve(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column is-one-quarter is-narrow">
+                                    <div class="notification">
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">12:00 - 13:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.twelve_to_thirteen(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">13:00 - 14:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.thirteen_to_fourteen(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">14:00 - 15:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.fourteen_to_fifteen(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">15:00 - 16:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.fifteen_to_sixteen(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">16:00 - 17:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.sixteen_to_seventeen(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">17:00 - 18:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.seventeen_to_eighteen(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column is-one-quarter is-narrow">
+                                    <div class="notification">
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">18:00 - 19:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.eighteen_to_nineteen(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">19:00 - 20:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.nineteen_to_twenty(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">20:00 - 21:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.twenty_to_twentyone(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">21:00 - 22:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.twentyone_to_twentytwo(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">22:00 - 23:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.twentytwo_to_twentythree(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field-label">
+                                                <label class="label">23:00 - 24:00 :</label>
+                                            </div>
+                                            <label class="radio">
+                                                <div class="control">
+                                                    {{ day_form.twentythree_to_twentyfour(class='input') }}
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="button is-black is-large is-fullwidth">
+                                <div class="control">
+                                {{day_form.submit2(class='input')}}
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

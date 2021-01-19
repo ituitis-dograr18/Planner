@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<section class="hero has-background-dark">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <div class="notification">
+                        <h4 class="title is-4">Current Task</h4>
+                        <p>You are on your {{ time_for }} time now.</p>
+
+                        {% for x in grouped %}
+                        {% for y in r %}
+                        <p>{{ x[1] }} people take {{ x[0] }} course with you.</p>
+                        <p> People study for {{ y[0] }} course {{ y[1] }} hours approximately. </p>
+                        {% endfor %}
+                        {% endfor %}
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4">Current Homeworks</h4>
+                        <table class="table is-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Course Name</th>
+                                    <th>Homework Title</th>
+                                    <th>Deadline</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for hw in homeworks %}
+                                <tr class="th">
+                                    <th>{{ hw['course_name'] }}</th>
+                                    <th>{{ hw['hw_name'] }}</th>
+                                    <th>{{ hw['deadline'] }}</th>
+                                    <th>{{ hw['hw_status'] }}</th>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <p><a href="{{ url_for('homeworks_page') }}">Click to see all your homeworks</a></p>
+                    </div>
+                </div>
+                <div class="column is-narrow">
+                    <div class="notification">
+                        <h4 class="title is-4">Current Exams</h4>
+                        <table class="table is-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Course Name</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for exam in exams %}
+                                <tr class="th">
+                                    <th>{{ exam['course_name'] }}</th>
+                                    <th>{{ exam['date'] }}</th>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <p><a href="{{ url_for('exams_page') }}">Click to see all your exams</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
